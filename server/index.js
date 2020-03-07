@@ -34,16 +34,17 @@ app.get('/genres', function(req, res) {
 });
 
 app.get('/search', function(req, res) {
-  console.log("Server Req rec'd : BODY: ", req.query); // { genre: 'Drama'}
+  console.log("Server Req rec'd - query: ", req.query); // { genre: 'Drama'}
   // use this endpoint to search for movies by genres (using API key): https://api.themoviedb.org/3/discover/movie
   // console.log("Getting Genres from API")
-  // axios.get('https://api.themoviedb.org/3/discover/movie?api_key=dc1f020950a87aec01d0131b44191fcf&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_genres=28')
-  //   .then(results => {
-  //     console.log(results);
-  //     // res.status(200).json(results.data.genres)
-  //   })
-  //   // post these to the db??
-  // .catch(err => console.log(err));
+  axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=dc1f020950a87aec01d0131b44191fcf&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_genres=${req.query.genre}`)
+    .then(results => {
+      console.log("Results returning to client");
+
+      res.status(200).json(results.data.results)
+    })
+    // post these to the db??
+  .catch(err => console.log(err));
 
   // and sort them by votes (worst first) using the search parameters in themoviedb API
 });

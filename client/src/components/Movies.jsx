@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Movie from './Movie.jsx';
 class Movies extends React.Component {
   constructor(props) {
     super(props)

@@ -15,7 +15,7 @@ class App extends React.Component {
       favorites: [{deway: "favorites"}],
       showFaves: false,
     };
-    
+    this.getMovies = this.getMovies.bind(this);
     // you might have to do something important here!
   }
 
@@ -32,7 +32,14 @@ class App extends React.Component {
       params: {
         genre: genreId
       }
-    });
+    })
+    .then(results => {
+      // console.log(results.data);
+      this.setState({
+        movies: results.data
+      }, () => console.log(this.state))
+    })
+    .catch(err => console.log(err));
      // handle success
 
   }
