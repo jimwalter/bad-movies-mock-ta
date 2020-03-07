@@ -13,7 +13,6 @@ class Search extends React.Component {
     this.getGenres = this.getGenres.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
-    // console.log("SEARCH PROPS: ", props);
 
   }
 
@@ -24,7 +23,7 @@ class Search extends React.Component {
   getGenres() {
     axios.get('http://localhost:3000/genres')
     .then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       this.setState({
         genres: response.data
       })

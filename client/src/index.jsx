@@ -15,38 +15,33 @@ class App extends React.Component {
       favorites: [{deway: "favorites"}],
       showFaves: false,
     };
+
     this.getMovies = this.getMovies.bind(this);
-    // you might have to do something important here!
+    this.saveMovie = this.saveMovie.bind(this);
   }
 
   componentDidMount() {
-    // this.getMovies();
+    this.getMovies(28);
   }
 
   getMovies(genreId) {
-    console.log("Requesting from server, ", genreId);
-    // make an axios request to your server on the GET SEARCH endpoint
-    // set state movies to the array returned 
-    // console.log("getting movies from client index & genre = ", genre);
     axios.get('http://localhost:3000/search', {
       params: {
         genre: genreId
       }
     })
     .then(results => {
-      // console.log(results.data);
       this.setState({
         movies: results.data
-      }, () => console.log(this.state))
+      })
     })
     .catch(err => console.log(err));
-     // handle success
-
   }
 
   saveMovie() {
     // same as above but do something diff
     // post to db
+    console.log("SAVING FROM INDEX.JSX")
   }
 
   deleteMovie() {
@@ -74,6 +69,7 @@ class App extends React.Component {
             />
           <Movies
             movies={this.state.showFaves ? this.state.favorites : this.state.movies}
+            saveMovie={this.saveMovie}
             showFaves={this.state.showFaves}/>
         </div>
       </div>
