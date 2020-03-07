@@ -4,10 +4,11 @@ class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      genres: []
+      genres: ['theway', 'thisway', 'thatway']
     };
   }
-  getGenres() {
+  getGenres(event) {
+    console.log(event);
     //make an axios request in this component to get the list of genres from your endpoint GET GENRES
   }
 
@@ -21,17 +22,19 @@ class Search extends React.Component {
         {/* How can you tell which option has been selected from here? */}
 
         <select>
-          <option value="theway">The Way</option>
-          <option value="thisway">This Way</option>
-          <option value="thatway">That Way</option>
+          {this.state.genres.map( type => {
+            // console.log(type);
+            return <option key={type} value={type}>{type}</option>
+            })
+          }
         </select>
         <br/><br/>
 
-        <button>Search</button>
+        <button onClick={this.getGenres(event)}>Search</button>
 
       </div>
     );
   }
-}
+};
 
 export default Search;

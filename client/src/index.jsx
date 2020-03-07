@@ -19,10 +19,13 @@ class App extends React.Component {
 
   getMovies() {
     // make an axios request to your server on the GET SEARCH endpoint
+    // set state movies to the array returned 
+
   }
 
   saveMovie() {
     // same as above but do something diff
+    // post to db
   }
 
   deleteMovie() {
