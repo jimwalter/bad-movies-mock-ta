@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+
 // import AnyComponent from './components/filename.jsx'
 import Search from './components/Search.jsx'
 import Movies from './components/Movies.jsx'
+const axios = require('axios');
 
 class App extends React.Component {
   constructor(props) {
@@ -17,9 +19,16 @@ class App extends React.Component {
     // you might have to do something important here!
   }
 
+  componentDidMount() {
+    // this.getMovies();
+  }
+
   getMovies() {
     // make an axios request to your server on the GET SEARCH endpoint
     // set state movies to the array returned 
+
+    // axios.get('http://localhost:3000/search');
+     // handle success
 
   }
 
@@ -30,6 +39,7 @@ class App extends React.Component {
 
   deleteMovie() {
     // same as above but do something diff
+    // delete from db
   }
 
   swapFavorites() {
@@ -45,8 +55,13 @@ class App extends React.Component {
         <header className="navbar"><h1>Bad Movies</h1></header> 
         
         <div className="main">
-          <Search swapFavorites={this.swapFavorites} showFaves={this.state.showFaves}/>
-          <Movies movies={this.state.showFaves ? this.state.favorites : this.state.movies} showFaves={this.state.showFaves}/>
+          <Search 
+            swapFavorites={this.swapFavorites}
+            showFaves={this.state.showFaves}
+            />
+          <Movies
+            movies={this.state.showFaves ? this.state.favorites : this.state.movies}
+            showFaves={this.state.showFaves}/>
         </div>
       </div>
     );
