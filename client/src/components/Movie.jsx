@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Movie = (props) => {
+    console.log(props.movie)
     return(
-        <li className="movie_item" onClick={props.onClick}>
+        <li className="movie_item" value={props.movie} onClick={props.onClick}>
             <img src= {"https://image.tmdb.org/t/p/w500/" + props.movie.poster_path} />
             <div className="movie_description">
             <h2>{props.movie.title}</h2>
@@ -17,7 +18,7 @@ const Movie = (props) => {
                 </div>
             </section> <br></br>
             <div>
-                <button value={props.value}>Save to Favorites</button>
+                <button value={props.movie}>Save to Favorites</button>
             </div>
             </div>
         </li>

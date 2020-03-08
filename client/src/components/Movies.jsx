@@ -11,9 +11,8 @@ class Movies extends React.Component {
   
 
   handleClick(event) {
-    event.preventDefault();
-    console.log("target value: ", event.target.value);
-    // this.props.saveMovie();
+    console.log(event.target);
+    this.props.saveMovie(event.target.value);
   }
   // Make an onClick for each list item. If the movies shown is the search results, 
   // onClick add it to the database (do it in the main app, and pass down the function)
@@ -22,11 +21,10 @@ class Movies extends React.Component {
   // You can tell which list is currently being rendered based on whether the prop "showFaves" is false (search results) or true (fave list) (within index.jsx)
 
   render() {
-    // console.log("movie props: ", this.props.movies);
     return (
       <ul className="movies">
         {this.props.movies.map( movie => {
-          return <Movie key={movie.id} value={movie} movie={movie} onClick={this.handleClick} />
+          return <Movie key={movie.id} movie={movie} onClick={this.handleClick} />
           })
         }
       </ul>
